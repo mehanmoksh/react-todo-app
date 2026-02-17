@@ -8,9 +8,9 @@ function App() {
   })
 
   //save todos to local storage
-  useEffect( () => {
-    localStorage.setItem('todos',JSON.stringify(todos))
-  },[todos])
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   //add todo function 
 
@@ -24,7 +24,7 @@ function App() {
     setTodos([
       ...todos,
       {
-        text:input, completed:false
+        text: input, completed: false
       }
     ])
     setInput("")
@@ -38,7 +38,7 @@ function App() {
   }
 
   //add toggle complete function
-  function toggleTodo(index){
+  function toggleTodo(index) {
     const newTodos = [...todos]
     newTodos[index].completed = !newTodos[index].completed
     setTodos(newTodos)
@@ -46,20 +46,25 @@ function App() {
 
   return (
     <div className='min-h-screen bg-gradient-to-br from-blue-100 to-purple-100 flex items-center justify-center p-4'>
-      <div className='bg-white rounded-xl shadow-xl p-6 w-full max-w-md'>
+      <div className='bg-white rounded-xl shadow-xl p-6 w-full max-w-md mx-auto'>
         <h1 className="text-2xl font-bold text-center mb-4 text-gray-800">React Todo App</h1>
         <h3 className="text-center text-gray-600 mb-4">Made with React and Tailwind CSS</h3>
-        
-        <div className='flex gap-2'>
+
+        <div className='flex flex-col sm:flex-row gap-2'>
           <input
-          placeholder='Enter a task...'
-          value={input}
-          onChange={(e) => setInput(e.target.value)} 
-          className='flex-1 border border-gray-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400'
+            placeholder='Enter a task...'
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && input.trim() !== "") {
+                addTodo()
+              }
+            }}
+            className='w-full sm:flex-1 border border-gray-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400'
           />
 
           <button onClick={addTodo}
-          className='bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition'>Add</button>
+            className='w-full sm:w-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition'>Add</button>
         </div>
 
         {/* show todos */}
@@ -83,11 +88,10 @@ function App() {
 
 
                 <span
-                  className={`${
-                    todo.completed
+                  className={`${todo.completed
                     ? "line-through text-gray-400"
                     : "text-gray-800"
-                  }`}
+                    }`}
                 >
                   {todo.text}
                 </span>
