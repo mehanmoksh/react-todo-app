@@ -3,6 +3,7 @@
 A modern, responsive, and production-ready Todo Web Application built using **React.js**, **Vite**, and **Tailwind CSS**, with persistent storage using **localStorage** and deployed on **Vercel**.
 
 🔗 **Live Demo:** https://moksh-react-todo-web-app.vercel.app/
+<br>
 🔗 **GitHub Repository:** https://github.com/mehanmoksh/react-todo-app
 
 ---
