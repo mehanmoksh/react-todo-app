@@ -125,12 +125,6 @@ npm run dev
 
 This project is deployed using **Vercel** with GitHub integration.
 
-Deployment workflow:
-
-* Push changes to GitHub
-* Vercel automatically builds and deploys
-* Live app updates instantly
-
 Live URL:
 https://moksh-react-todo-web-app.vercel.app/
 
